@@ -1,72 +1,107 @@
+import tkinter as tk
 import turtle
 t = turtle.Pen()
 t.speed(100)
-                    
-def left_spiral():
-    global size
-    t_pencolor()
-    t_size()
-    for x in range (size):
+
+class Buttons:
+        def __init__(self, master):
+                #create a frame in the main window "master"
+                frame = Frame(master)
+                frame.pack()
+
+def draw_a_left_spiral():
+    for x in range (200):
         t.forward(x)
         t.left(91)
 
-def right_spiral():
-    global size
-    t_pencolor()
-    t_size()
-    for x in range (size):
+def draw_a_right_spiral():
+  for x in range (200):
         t.forward(x)
         t.right(91)
 
-def left_tri():
-    global size
-    t_pencolor()
-    t_size()
-    for x in range (size):
+def draw_a_left_tri():
+    for x in range (200):
         t.forward(x)
         t.left(121)
-        
-def right_tri():
-    global size
-    t_pencolor()
-    t_size()
-    for x in range (size):
+
+def draw_a_right_tri():
+   for x in range (200):
         t.forward(x)
         t.right(121)
+        
+def make_it_blue():
+    t.pencolor("blue")
 
-def t_pencolor():
-    color = input("""What would you like the color to be? blue, red, or yellow. """)
-    if color == "blue":
-        t.pencolor("blue")
-    if color == "red":
-        t.pencolor("red")
-    if color == "yellow":
-        t.pencolor("yellow")
-            
-def t_size():
-    global size
-    size = int(input("""What size would you like it to be? 50, 100, or 200. """))
+def make_it_red():
+    t.pencolor("red")
+
+def make_it_yellow():
+    t.pencolor("yellow")
     
+root = tk.Tk()
+root.title("~~~Turtle Drawing~~~")
+frame = tk.Frame(root)
+frame.pack()
 
-while True:
-    drawing = input("""What would you like to draw?
-1 a left spiral 
-2 a right spiral
-3 a left triangle
-4 a right triangle 
-""")
-    if drawing == "1":
-        left_spiral()
-    elif drawing == "2":
-        right_spiral()
-    elif drawing == "3":
-        left_tri()
-    elif drawing == "4":
-        right_tri()
+###color buttons
+self.blue_button = tk.Button(colorframe, 
+                   text="Blue", 
+                   fg="blue",
+                   command=make_it_blue)
+#blue_button.pack(side=tk.LEFT)
 
+self.red_button = tk.Button(colorframe, 
+                   text="Red", 
+                   fg="red",
+                   command=make_it_red)
+#red_button.pack(side=tk.LEFT)
 
+self.yellow_button = tk.Button(colorframe, 
+                   text="Yellow", 
+                   fg="yellow",
+                   command=make_it_yellow)
+#yellow_button.pack(side=tk.LEFT)
 
+###shape buttons
+self.left_spiral_button = tk.Button(shapeframe, 
+                   text="Left Spiral", 
+                   fg="black",
+                   command=draw_a_left_spiral)
+#left_spiral_button.pack(side=tk.LEFT)
 
+self.right_spiral_button = tk.Button(shapeframe, 
+                   text="Right Spiral", 
+                   fg="black",
+                   command=draw_a_right_spiral)
+#right_spiral_button.pack(side=tk.LEFT)
+
+self.left_tri_button = tk.Button(frame, 
+                   text="Left Triangle", 
+                   fg="black",
+                   command=draw_a_left_tri)
+#left_tri_button.pack(side=tk.LEFT)
+
+self.right_tri_button = tk.Button(shapeframe, 
+                   text="Right Triangle", 
+                   fg="black",
+                   command=draw_a_right_tri)
+#right_tri_button.pack(side=tk.LEFT)
+
+###the quit button
+self.quit_button = tk.Button(bottomframe,
+                   text="Quit",
+                   command=quit)
+self.quit_button.pack(side=tk.LEFT)
+
+###the frames
+colorframe = Frame(root)
+colorframe.pack()
+shapeframe = Frame(root)
+shapeframe.pack()
+bottomframe =Frame(root)
+bottomframe.pack(side=BOTTOM)
+
+root.mainloop()
     
     
                     
