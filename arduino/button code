@@ -1,0 +1,7 @@
+ int button1State;
+  while(true){}
+    button1State = digitalRead(buttonpin);
+    if (button1State == HIGH)
+    {      tone(buzzerPin, frequency(note_f4));
+                     // brief pause between notes
+    }
