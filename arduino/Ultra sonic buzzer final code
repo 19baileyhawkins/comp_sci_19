@@ -1,8 +1,9 @@
 /*
 * Ultrasonic Sensor HC-SR04 interfacing with Arduino.
 */
-// defining the pins
 
+// defining the pins
+// All the notes that are emitted from the buzzer and their frequencies
 #define NOTE_C 262
 #define NOTE_D 294
 #define NOTE_E 330
@@ -14,22 +15,24 @@
 
 #define ACTIVATED LOW  
 
+// where piezo and ultra sonic are located 
 const int PIEZO = 13;
-
-
 const int trigPin = 11;
 const int echoPin = 10;
+
 // defining variables
 float duration;
 float distance;
 float some_value;
-void setup() {
 
+// setup
+void setup() {
 pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
 pinMode(echoPin, INPUT); // Sets the echoPin as an Input
 Serial.begin(9600); // Starts the serial communication
 }
 
+// loop
 void loop() {
 // Clears the trigPin
 digitalWrite(trigPin, LOW);
@@ -46,9 +49,9 @@ distance= duration*0.034/2;
 Serial.print("Distance: ");
 Serial.println(distance);
 
-
-int thisPitch = map(distance, 30, 0, 120, 1500);
-tone(PIEZO, thisPitch, 100);
-delay(20);
+//changes the distance to frequencies/notes
+int thisPitch = map(distance, 30, 0, 120, 1500); 
+tone(PIEZO, thisPitch, 100); // (piezo, frequency/note, duration)
+delay(20); //delays inetween each note
 
 }
